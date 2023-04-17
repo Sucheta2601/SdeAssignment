@@ -1,0 +1,28 @@
+public static int findCurrentIndexMemberIndex(List<String> oldQueue, int currentIndex, List<String> newQueue) {
+    // to get the Current Index Member from the old task queue
+    String currentIndexMember = oldQueue.get(currentIndex);
+
+    // to check if the Current Index Member is present in the new task queue
+    if (newQueue.contains(currentIndexMember)) {
+        // to fiind the index of the Current Index Member in the new task queue
+        int currentIndexMemberIndex = newQueue.indexOf(currentIndexMember);
+        return currentIndexMemberIndex;
+    } else {
+        // finding the index of the next available member to the Current Index Member in the new task queue
+        for (int i = currentIndex + 1; i < oldQueue.size(); i++) {
+            String member = oldQueue.get(i);
+            if (newQueue.contains(member)) {
+                int memberIndex = newQueue.indexOf(member);
+                return memberIndex;
+            }
+        }
+    }
+
+    return -1; // if current Index member is not found in the new task queue
+}
+
+
+Explanation-
+It takes in the old task queue, the current index, and the new task queue and returns the index of the Current Index Memberin the new task queue. 
+If the Current Index Member is not present in the new task queue,then it finds the index of the next available member to the Current Index Member in the new task queue. 
+If no such member is found, it returns -1.
