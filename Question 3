@@ -1,0 +1,26 @@
+public class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) { val = x; }
+}
+
+public static int getMiddle(ListNode head) {
+    if (head == null) {
+        return -1; // Return -1 if the list is empty
+    }
+    ListNode slow = head;
+    ListNode fast = head;
+    while (fast != null && fast.next != null) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    return slow.val;
+}
+
+
+Expanation-
+The getMiddle() function takes a head reference as input and returns the data at the middle node of the linked list. It uses two pointers, slow and fast, that start at the head of the list. 
+The fast pointer moves two nodes at a time, while the slow pointer moves one node at a time. When the fast pointer reaches the end of the list (i.e., fast is either null or its next node is null), 
+the slow pointer points to the middle element of the list.
+If the number of nodes in the list is even, this function returns the second middle element. 
+If you want to return the first middle element, you can modify the function to check if the number of nodes is even and move the slow pointer back one node if necessary.
